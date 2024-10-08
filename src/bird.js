@@ -17,6 +17,7 @@ class Bird {
      }
  
      draw() {
+          return;
          image(this.images[this.frameIndex], this.x, this.y, this.width, this.height);// Kullanıcı zıplama komutu verdiğinde yukarı doğru kuvvet uygula
      }
  

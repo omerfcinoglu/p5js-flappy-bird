@@ -1,7 +1,8 @@
 let bird;
 let ground1, ground2;
-let backgroundLayer;
-
+let backgroundLayer, backgroundImage;
+let _textFont;
+let pipeImage,pipeManager;
 
 function preload() {
     birdImages = [
@@ -11,19 +12,25 @@ function preload() {
     ];
     groundImage = loadImage('assets/ground.png');
     backgroundImage = loadImage('assets/background-day.png');
+
+    pipeImage = loadImage('assets/pipe-green.png')
+    _textFont = loadFont('assets/fonts/FlappyBirdy.ttf');
 }
 
 function setup() {
     createCanvasForGame();
+    textFont(_textFont);
+    textSize(123);
+    fill(255);
 
-    // Arka planı, zemini ve kuşu oluştur
     backgroundLayer = new Background(backgroundImage, 0, 0, width, height, 1);
 
-    // İlk zemin ekranın başlangıcında, ikinci zemin hemen ardında olacak şekilde yerleştiriliyor
     ground1 = new Ground(groundImage, 0, height - 100, width, 100, 2);
     ground2 = new Ground(groundImage, width, height - 100, width, 100, 2);
 
-    bird = new Bird(birdImages, 100, height / 2, 42,40);
+    bird = new Bird(birdImages, ((width / 2) - 53), ((height / 2) - 25), 53.1, 50);
+
+    pipeManager = new PipeManager(3, 150, 150, 80 , height, 0.3);
 }
 
 function draw() {
@@ -33,7 +40,8 @@ function draw() {
     backgroundLayer.draw();
     backgroundLayer.update();
 
-    // Zemini çiz ve güncelle
+    pipeManager.updateAndDraw(deltaTime);
+
     ground1.draw();
     ground1.update();
     ground1.resetPositionIfOutOfScreen();
@@ -42,13 +50,20 @@ function draw() {
     ground2.update();
     ground2.resetPositionIfOutOfScreen();
 
+    // Kuşu çiz ve güncelle
     bird.draw();
     bird.update();
+
+    // Boruları yönet ve çiz
+    
+    // Başlık yazısı
+    textAlign(CENTER, CENTER);
+    text('genetic bird', width / 2, 100);
 }
 
 function keyPressed() {
     if (key === ' ') {
-        bird.fly();  
+        bird.fly();
     }
 }
 
@@ -64,7 +79,7 @@ function windowResized() {
     ground2.width = width;
 
     ground1.x = 0;
-    ground2.x = ground1.width; 
+    ground2.x = ground1.width;
 }
 
 function createCanvasForGame() {
