@@ -1,5 +1,5 @@
 class Background {
-     constructor(image, x, y, width, height, speed) {
+     constructor({image, x, y, width, height, speed}) {
          this.image = image;
          this.x = x;
          this.y = y;
@@ -13,7 +13,7 @@ class Background {
      }
  
      update() {
-          
+
      }
  }
  

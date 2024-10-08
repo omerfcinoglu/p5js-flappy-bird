@@ -1,5 +1,5 @@
 class Ground {
-     constructor(image, x, y, width, height, speed) {
+     constructor({image, x, y, width, height, speed}) {
          this.image = image;
          this.x = x;
          this.y = y;

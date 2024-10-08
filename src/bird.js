@@ -1,5 +1,5 @@
 class Bird {
-     constructor(images, x, y, width, height) {
+     constructor({images, x, y, width, height}) {
          this.images = images;  // Kuşun animasyon kareleri (görselleri)
          this.x = x;
          this.y = y;
@@ -17,7 +17,6 @@ class Bird {
      }
  
      draw() {
-          return;
          image(this.images[this.frameIndex], this.x, this.y, this.width, this.height);// Kullanıcı zıplama komutu verdiğinde yukarı doğru kuvvet uygula
      }
  

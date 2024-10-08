@@ -18,20 +18,56 @@ function preload() {
 }
 
 function setup() {
-    createCanvasForGame();
-    textFont(_textFont);
-    textSize(123);
-    fill(255);
+  createCanvasForGame();
+  textFont(_textFont);
+  textSize(123);
+  fill(255);
 
-    backgroundLayer = new Background(backgroundImage, 0, 0, width, height, 1);
+  backgroundLayer = new Background({
+      image: backgroundImage,
+      x: 0,
+      y: 0,
+      width: width,
+      height: height,
+      speed: 1
+  });
 
-    ground1 = new Ground(groundImage, 0, height - 100, width, 100, 2);
-    ground2 = new Ground(groundImage, width, height - 100, width, 100, 2);
+  ground1 = new Ground({
+      image: groundImage,
+      x: 0,
+      y: height - 100,
+      width: width,
+      height: 100,
+      speed: 2
+  });
 
-    bird = new Bird(birdImages, ((width / 2) - 53), ((height / 2) - 25), 53.1, 50);
+  ground2 = new Ground({
+      image: groundImage,
+      x: width,
+      y: height - 100,
+      width: width,
+      height: 100,
+      speed: 2
+  });
 
-    pipeManager = new PipeManager(3, 150, 150, 80 , height, 0.3);
+  bird = new Bird({
+      images: birdImages,
+      x: (width / 2) - 53,
+      y: (height / 2) - 25,
+      width: 55,
+      height: 50
+  });
+
+  pipeManager = new PipeManager({
+      pipeCount: 3,
+      gap: 150,
+      gapHeight: 150,
+      pipeWidth: 80,
+      pipeHeight: height,
+      pipeSpeed: 0
+  });
 }
+
 
 function draw() {
     background(220);
