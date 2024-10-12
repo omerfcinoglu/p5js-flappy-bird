@@ -6,10 +6,8 @@ class Bird {
          this.width = width;
          this.height = height;
          this.velocity = 0;  // Kuşun düşme hızı
-     //     this.gravity = 0.6; // Yerçekimi etkisik
-     //     this.lift = -15;    // Zıplama kuvvetik
-     this.gravity = 0; // Yerçekimi etkisik
-     this.lift = -15;    // Zıplama kuvvetik
+         this.gravity = 0.2; 
+         this.lift = -5;    
 
          this.frameIndex = 0;  
          this.frameDelay = 8;  
@@ -33,6 +31,8 @@ class Bird {
              this.y = 0;
              this.velocity = 0;
          }
+
+         this.isGrounded();
  
          this.frameCounter++;
          if (this.frameCounter >= this.frameDelay) {
@@ -42,7 +42,15 @@ class Bird {
      }
  
      fly() {
+        this.velocity = 0;
          this.velocity += this.lift; 
+     }
+
+     isGrounded(){
+        if (this.y + this.height >= height - 100) {
+            this.y = height - 100 - this.height;
+            this.velocity = 0; 
+        }
      }
  }
  

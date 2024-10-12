@@ -5,7 +5,7 @@ class Ground {
          this.y = y;
          this.width = width;
          this.height = height;
-         this.speed = speed; // Zemin hareket hızı
+         this.speed = speed; 
      }
  
      draw() {
@@ -18,7 +18,7 @@ class Ground {
  
      resetPositionIfOutOfScreen() {
          if (this.x <= -this.width) {
-             this.x += this.width * 2;  // Zemin ekranın solundan çıktıysa diğer zeminin sağına geç
+             this.x += this.width * 2;
          }
      }
  }
