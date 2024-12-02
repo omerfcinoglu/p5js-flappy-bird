@@ -72,7 +72,6 @@ function setup() {
 function draw() {
     background(220);
 
-    // Arka planı çiz ve güncelle
     backgroundLayer.draw();
     backgroundLayer.update();
 
@@ -86,13 +85,9 @@ function draw() {
     ground2.update();
     ground2.resetPositionIfOutOfScreen();
 
-    // Kuşu çiz ve güncelle
     bird.draw();
     bird.update();
-
-    // Boruları yönet ve çiz
     
-    // Başlık yazısı
     textAlign(CENTER, CENTER);
     text('genetic bird', width / 2, 100);
 }
@@ -121,11 +116,9 @@ function windowResized() {
 function createCanvasForGame() {
     let ratio = 9 / 16;
 
-    // Ekran boyutlarını al
     let availableWidth = windowWidth;
     let availableHeight = windowHeight;
 
-    // 9:16 oranını korumak için uygun boyutları belirle
     let newHeight = availableHeight;
     let newWidth = newHeight * ratio;
 
@@ -133,7 +126,5 @@ function createCanvasForGame() {
         newWidth = availableWidth;
         newHeight = newWidth / ratio;
     }
-
-    // Canvas boyutlarını ayarla
-    resizeCanvas(newWidth, newHeight, true);
+    resizeCanvas(newWidth * 0.5, newHeight * 0.5, true);
 }
