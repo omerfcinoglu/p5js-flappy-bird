@@ -16,7 +16,7 @@ class PipeManager {
         }
     }
 
-    updateAndDraw(bird, deltaTime) {
+    updateAndDraw(bird, game, deltaTime) {
         for (let i = this.pipes.length - 1; i >= 0; i--) {
             let pipe = this.pipes[i];
             pipe.draw();
@@ -29,8 +29,23 @@ class PipeManager {
             }
 
             if (bird && !pipe.passed && pipe.x + pipe.width < bird.x) {
-                console.log("skor arttır");
                 pipe.passed = true;
+                if (game && typeof game.incrementScore === 'function') {
+                    game.incrementScore();
+                }
+            }
+
+            if (bird) {
+                let birdRight = bird.x + bird.width;
+                let birdBottom = bird.y + bird.height;
+
+                let collideX = birdRight > pipe.x && bird.x < pipe.x + pipe.width;
+                let collideY = bird.y < pipe.topHeight || birdBottom > pipe.bottomY;
+                if (collideX && collideY) {
+                    if (game && typeof game.gameOver === 'function') {
+                        game.gameOver();
+                    }
+                }
             }
         }
     }
