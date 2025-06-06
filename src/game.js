@@ -2,6 +2,7 @@
 class Game {
   constructor() {
     this.state = 'start';
+    this.score = 0;
     this.initializeObjects();
   }
 
@@ -53,6 +54,14 @@ class Game {
     });
   }
 
+  incrementScore() {
+    this.score += 1;
+  }
+
+  gameOver() {
+    this.state = 'gameover';
+  }
+
   setup() {
     createCanvasForGame();
     textFont(_textFont);
@@ -65,6 +74,7 @@ class Game {
 
   reset() {
     this.state = 'start';
+    this.score = 0;
     this.initializeObjects();
   }
 
@@ -85,7 +95,7 @@ class Game {
     this.backgroundLayer.draw();
     this.backgroundLayer.update();
 
-    this.pipeManager.updateAndDraw(this.bird, deltaTime);
+    this.pipeManager.updateAndDraw(this.bird, this, deltaTime);
 
     this.ground1.draw();
     this.ground1.update();
@@ -99,11 +109,16 @@ class Game {
     this.bird.update();
 
     if (this.bird.y + this.bird.height >= height - 100) {
-      this.state = 'gameover';
+      this.gameOver();
     }
 
     textAlign(CENTER, CENTER);
     text('genetic bird', width / 2, 100);
+
+    textAlign(LEFT, TOP);
+    textSize(32);
+    text(this.score, 20, 20);
+    textSize(123);
   }
 
   drawStart() {
