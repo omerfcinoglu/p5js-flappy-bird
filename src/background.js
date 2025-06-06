@@ -8,12 +8,18 @@ class Background {
          this.speed = speed; 
      }
  
-     draw() {
-         image(this.image, this.x, this.y, this.width, this.height);
-     }
- 
-     update() {
+    draw() {
+        image(this.image, this.x, this.y, this.width, this.height);
+        if (this.x + this.width < width) {
+            image(this.image, this.x + this.width, this.y, this.width, this.height);
+        }
+    }
 
-     }
- }
+    update() {
+        this.x -= this.speed * deltaTime;
+        if (this.x <= -this.width) {
+            this.x = 0;
+        }
+    }
+}
  
