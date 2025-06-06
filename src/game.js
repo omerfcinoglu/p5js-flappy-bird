@@ -21,18 +21,18 @@ class Game {
     this.ground1 = new Ground({
       image: groundImage,
       x: 0,
-      y: height - 100,
+      y: height - Ground.HEIGHT,
       width: width,
-      height: 100,
+      height: Ground.HEIGHT,
       speed: 2,
     });
 
     this.ground2 = new Ground({
       image: groundImage,
       x: width,
-      y: height - 100,
+      y: height - Ground.HEIGHT,
       width: width,
-      height: 100,
+      height: Ground.HEIGHT,
       speed: 2,
     });
 
@@ -108,7 +108,7 @@ class Game {
     this.bird.draw();
     this.bird.update();
 
-    if (this.bird.y + this.bird.height >= height - 100) {
+    if (this.bird.y + this.bird.height >= height - Ground.HEIGHT) {
       this.gameOver();
     }
 

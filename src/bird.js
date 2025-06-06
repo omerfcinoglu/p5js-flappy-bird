@@ -46,11 +46,11 @@ class Bird {
          this.velocity += this.lift; 
      }
 
-     isGrounded(){
-        if (this.y + this.height >= height - 100) {
-            this.y = height - 100 - this.height;
-            this.velocity = 0; 
-        }
-     }
- }
+    isGrounded(){
+       if (this.y + this.height >= height - Ground.HEIGHT) {
+           this.y = height - Ground.HEIGHT - this.height;
+           this.velocity = 0;
+       }
+    }
+}
  

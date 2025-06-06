@@ -16,10 +16,14 @@ class Ground {
          this.x -= this.speed;
      }
  
-     resetPositionIfOutOfScreen() {
-         if (this.x <= -this.width) {
-             this.x += this.width * 2;
-         }
-     }
- }
+    resetPositionIfOutOfScreen() {
+        if (this.x <= -this.width) {
+            this.x += this.width * 2;
+        }
+    }
+}
+
+// Default height of the ground graphic
+Ground.HEIGHT = 100;
+
  
