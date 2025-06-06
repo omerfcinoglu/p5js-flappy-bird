@@ -2,11 +2,7 @@ A small Flappy Bird clone built with p5.js. The project uses p5.js v1.10.0 and p
 
 ## Running the Game
 
-No build step is required. Simply open `index.html` in your browser or serve the project locally with a web server:
-
-```bash
-python3 -m http.server
-```
+No build step is required. Simply open `index.html` in your browser or serve the project locally with a web server
 Then navigate to `http://localhost:8000`.
 
 ## Installing Dependencies
