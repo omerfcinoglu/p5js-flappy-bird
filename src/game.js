@@ -50,7 +50,7 @@ class Game {
       gapHeight: 150,
       pipeWidth: 80,
       pipeHeight: height,
-      pipeSpeed: 0,
+      pipeSpeed: 2,
     });
   }
 
@@ -59,7 +59,11 @@ class Game {
   }
 
   gameOver() {
-    this.state = 'gameover';
+    if (this.state !== 'gameover') {
+      this.state = 'gameover';
+      this.pipeManager.setSpeed(0);
+      this.bird.velocity = 0;
+    }
   }
 
   setup() {
@@ -122,7 +126,10 @@ class Game {
   }
 
   drawStart() {
-    this.drawGame();
+    this.backgroundLayer.draw();
+    this.ground1.draw();
+    this.ground2.draw();
+    this.bird.draw();
     textAlign(CENTER, CENTER);
     textSize(32);
     text('Press SPACE to start', width / 2, height / 2);

@@ -58,5 +58,5 @@ function createCanvasForGame() {
         newWidth = availableWidth;
         newHeight = newWidth / ratio;
     }
-    resizeCanvas(newWidth * 0.5, newHeight * 0.5, true);
+    createCanvas(newWidth, newHeight);
 }
