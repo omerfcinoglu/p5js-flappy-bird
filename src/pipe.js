@@ -1,10 +1,11 @@
 class Pipe {
-     constructor({x, gap, width, height, speed}) {
-         this.x = x;                  // Boruların x koordinatı (ekranın sağından başlar)
-         this.gapHeight = gap;        // Boşluğun yüksekliği
-         this.width = width;            // Borunun genişliği sabit (160 birim)
-         this.height = height;           // Borunun yüksekliği sabit (160 birim)
-         this.speed = speed;          // Borunun hareket hızı
+      constructor({x, gap, width, height, speed}) {
+        this.x = x;                  // Boruların x koordinatı (ekranın sağından başlar)
+        this.gapHeight = gap;        // Boşluğun yüksekliği
+        this.width = width;            // Borunun genişliği sabit (160 birim)
+        this.height = height;           // Borunun yüksekliği sabit (160 birim)
+        this.speed = speed;          // Borunun hareket hızı
+        this.passed = false;        // Skor için geçilip geçilmediğini takip eder
  
          this.topHeight = random(100, this.height - this.gapHeight - 150);
          this.bottomY = this.topHeight + this.gapHeight;  // Alt borunun başlangıç y koordinatı

@@ -3,6 +3,7 @@ class PipeManager {
         this.pipes = [];
         this.gap = gap;
         this.gapHeight = gapHeight;
+        this.defaultSpeed = pipeSpeed;
         for (let i = 0; i < pipeCount; i++) {
             let x = width + i * (300);
             let pipeProps = {
@@ -52,5 +53,9 @@ class PipeManager {
 
     getMaxPipeX() {
         return Math.max(...this.pipes.map(pipe => pipe.x));
+    }
+
+    setSpeed(speed) {
+        this.pipes.forEach(pipe => pipe.speed = speed);
     }
 }
